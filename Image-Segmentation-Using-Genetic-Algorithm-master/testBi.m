@@ -3,7 +3,9 @@ function img = testBi(GlobalAverage,I)
 % I = imread("images/download.jpg");
  
 %  GlobalAverage = round(mean2(I));
-HM = GlobalAverage
+% HM = GlobalAverage
+GlobalAverage=129
+ HM=GlobalAverage
 ILE = find(I>=HM);
 IHE = find(I<HM);
 
@@ -24,7 +26,7 @@ HEI = intlut(I, lookupTable);
  
 % MI= mean2(I);
 % 
- MI=mean2(I)
+ MI=mean2(I);
 % MEI = mean2(HEI);
 % SI= std2(I);
 % SIE=std2(HEI);
@@ -54,8 +56,14 @@ HEI = intlut(I, lookupTable);
 % imshow(orig)
 %  subplot(3,2,4)
 %  imhist(orig)
+EI=histeq(I);
+subplot(1,3,1)
+imshow(I)
+subplot(1,3,2)
+imshow(EI)
 subplot(1,3,3)
-imshow(HEI)
+histogram(EI)
+
 %  subplot(3,2,6)
 %  imhist(HEI)
 %  
@@ -63,9 +71,30 @@ imshow(HEI)
 % 
 %  Evaluate(I,orig);
 %  
-    PSNRofResult = PSNR(HEI,I)
+subplot(2,3,1);
+imshow(I);
+subplot(2,3,2);
+imshow(EI);
+subplot(2,3,3);
+% imshow(HEI);
+histogram(EI);
+subplot(2,3,4);
+imshow(I);
+subplot(2,3,5);
+imshow(HEI);
+subplot(2,3,6);
+histogram(HEI);
+
+    
+    PSNRofResultHist = PSNR(EI,I)    
+    PSNRofResultBiHist = PSNR(HEI,I)
+    
+   
     TenegradOfImage = Tenengrad(I)
-    TenegradOfResult = Tenengrad(HEI)
-    ci=Contrast(I)
-    cr=Contrast(HEI)
+    TenegradOfResultHistogarmEQ = Tenengrad(EI)  
+    TenegradOfResultBihistogarmEQ = Tenengrad(HEI)
+    
+    contrastOfOriginalImage=Contrast(I)
+    ContrastOfResultUsingHistogramEQ=Contrast(HEI)
+    ContrastOfResultUsingBiHistogramEQ=Contrast(EI)
 end

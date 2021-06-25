@@ -3,18 +3,18 @@
 
 % Default variables
 n_population =  20;
-n_iterations =  100;
+n_iterations =  200;
 n_bins       = 256;
-n_thresholds =   10;
+n_thresholds =   30;
 
 % Ratios of all GA operations
 p_selection = 0.1;
 p_crossover = 0.7;
-p_mutation  = 0.2;
+p_mutation  = 0.3;
 assert(sum([p_selection, p_crossover, p_mutation]) == 1, 'Total sum of proportions have to be 1!');
 
 % Read image
-image = imread("images\mountain.jpg");
+image = imread("images\fl3.jpg");
 s=length(size(image));
 if( s == 3)
 image = rgb2gray(image);

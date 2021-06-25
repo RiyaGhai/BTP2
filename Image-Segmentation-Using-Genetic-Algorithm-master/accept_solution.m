@@ -52,9 +52,12 @@ function accept_solution(image, population, n_thresholds,I)
     end
     subplot(1,3,1);
     imshow(I);
+    
+    segmentation1=uint8(round(segmentation1.*255));
     subplot(1,3,2);
-    segmentation1=round(segmentation1.*256);
     imshow(segmentation1);
+    subplot(1,3,3);
+    histogram(segmentation1);
     CalculateAverage(segmentation1,I);
     
 %     ContrastOfImage = contrast(image)

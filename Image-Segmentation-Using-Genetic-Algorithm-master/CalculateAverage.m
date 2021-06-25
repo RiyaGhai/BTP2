@@ -36,13 +36,14 @@ k= values(m);
 k= cell2mat(k);
 s=0;
 for i=1:size(k,2)
-    if (k(1,i)~=backMean)
+%     if (k(1,i)~=backMean)
     s = s+ k(1,i);
-    end
+%     end
 end
 
-GlobalAverage = round( (round(s/size(k,2)-1)+ backMean)/2);
- testBi(GlobalAverage,image);
+% GlobalAverage = round( (round(s/size(k,2)-1)+ backMean)/2);
+GlobalAverage = round(round(s/size(k,2)))
+[ig]= testhist(image,GlobalAverage);
 end
 
         
